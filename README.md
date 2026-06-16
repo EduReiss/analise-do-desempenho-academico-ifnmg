@@ -29,11 +29,12 @@ com base nos dados de acesso à plataforma digital — sem utilizar as notas.
 ## O que foi feito
 
 ### Visualização de Dados
-- Pré-processamento: tratamento de valores ausentes e encoding de variáveis categóricas
-- Gráficos de barra: aprovados vs reprovados por disciplina
-- Box plots: distribuição de notas das disciplinas A, B e C
-- Engenharia de feature: criação da coluna `Total_Forum` somando todos os acessos aos fóruns
-- Visualização da relação entre engajamento nos fóruns e desempenho final
+
+#### Aprovados e Reprovados por Disciplina
+![Barras](assets/barras_resultado.png)
+
+#### Distribuição de Notas por Disciplina
+![Boxplot](assets/boxplot_notas.png)
 
 ### Modelos de Classificação
 Variável alvo: `Resultado` (APROVADO / REPROVADO)  
@@ -44,6 +45,12 @@ Variáveis descritivas: apenas dados de acesso à plataforma
 | Árvore de Decisão | 84% |
 | Random Forest | 89% |
 
+#### Matrizes de Confusão
+![Matrizes de Confusão](assets/matrizes_confusao.png)
+
+#### Importância das Variáveis — Random Forest
+![Importância](assets/importancia_variaveis.png)
+
 ### Modelos de Regressão
 Variável alvo: `NotaTotal`  
 Variáveis descritivas: apenas dados de acesso à plataforma
@@ -52,6 +59,12 @@ Variáveis descritivas: apenas dados de acesso à plataforma
 |--------|----|------|
 | Regressão Linear | -0.05 | 97.23 |
 | Gradient Boosting | -0.12 | 100.54 |
+
+#### Real vs Predito
+![Regressão](assets/regressao_real_vs_predito.png)
+
+#### Importância das Variáveis — Gradient Boosting
+![Importância GB](assets/importancia_gb.png)
 
 > **Limitação:** os modelos de regressão apresentaram R² negativo, indicando
 > que os dados de acesso isoladamente não são suficientes para estimar a nota
@@ -67,6 +80,12 @@ Variáveis descritivas: apenas dados de acesso à plataforma
 | 0 | 479 | 12.9% | Baixo engajamento |
 | 1 | 306 | 84.6% | Alto desempenho |
 | 2 | 232 | 77.2% | Intermediário |
+
+#### Clusters — PCA + K-Means
+![Clustering](assets/clustering_pca.png)
+
+#### Método do Cotovelo
+![Elbow](assets/elbow_chart.png)
 
 ## Principal descoberta
 
