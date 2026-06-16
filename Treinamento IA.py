@@ -2,9 +2,11 @@ import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder
+import sys
+sys.stdout.reconfigure(encoding='utf-8')
 
 # Carrega os dados
-df = pd.read_csv(r"C:\Users\mateu\Desktop\Programação\Projetos\Projeto multidisciplinar IFNMG\.gitignore\dados.csv")
+df = pd.read_csv(r"C:\Users\mateu\Desktop\Programação\Projetos\Projeto multidisciplinar IFNMG\dados.csv")
 
 # Limpeza básica
 df = df[df['Resultado'].isin(['APROVADO', 'REPROVADO'])].copy()
@@ -265,3 +267,15 @@ plt.legend()
 plt.tight_layout()
 plt.savefig('elbow_chart.png', dpi=150)
 plt.show()
+
+print("\n=== RESULTADOS DOS MODELOS ===")
+
+# Classificação
+print(f"\nÁrvore de Decisão - Acurácia: {accuracy_score(y_clf_test, y_pred_dt):.4f}")
+print(f"Random Forest - Acurácia: {accuracy_score(y_clf_test, y_pred_rf):.4f}")
+
+# Regressão
+print(f"\nRegressão Linear - R²: {r2_score(y_reg_test, y_pred_lr):.4f}")
+print(f"Regressão Linear - RMSE: {np.sqrt(mean_squared_error(y_reg_test, y_pred_lr)):.4f}")
+print(f"\nGradient Boosting - R²: {r2_score(y_reg_test, y_pred_gb):.4f}")
+print(f"Gradient Boosting - RMSE: {np.sqrt(mean_squared_error(y_reg_test, y_pred_gb)):.4f}")
